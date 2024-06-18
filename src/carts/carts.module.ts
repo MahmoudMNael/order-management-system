@@ -7,5 +7,6 @@ import { UsersModule } from 'src/users/users.module';
   imports: [UsersModule],
   controllers: [CartsController],
   providers: [CartsService],
+  exports: [CartsService],
 })
 export class CartsModule {}
