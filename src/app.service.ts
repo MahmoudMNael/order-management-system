@@ -1,9 +1,18 @@
 import { Injectable, OnApplicationBootstrap } from '@nestjs/common';
 import { DatabaseService } from './database/database.service';
 
+/**
+ * Service responsible for handling application-level operations.
+ */
 @Injectable()
 export class AppService implements OnApplicationBootstrap {
   constructor(private readonly databaseService: DatabaseService) {}
+
+  /**
+   * Executes when the application has finished bootstrapping.
+   * Truncates the "Product" table and inserts sample data.
+   * Truncates the "Coupon" table and inserts sample data.
+   */
   async onApplicationBootstrap() {
     await this.databaseService
       .$queryRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE;`;
@@ -32,6 +41,10 @@ export class AppService implements OnApplicationBootstrap {
     });
   }
 
+  /**
+   * Returns a greeting message.
+   * @returns The greeting message.
+   */
   getHello(): string {
     return 'Hello World!';
   }

@@ -15,11 +15,20 @@ import { Response } from 'express';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { AuthGuard } from './auth.guard';
 
+/**
+ * Controller responsible for handling authentication-related requests.
+ */
 @Controller('auth')
 @Serialize(UserDto)
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  /**
+   * Endpoint for user login.
+   * @param signInUserDto - The DTO containing user login information.
+   * @param response - The HTTP response object.
+   * @returns The HTTP response with a JWT cookie and a success message.
+   */
   @Post('login')
   async signIn(
     @Body() signInUserDto: SignInUserDto,
@@ -31,6 +40,12 @@ export class AuthController {
     return response;
   }
 
+  /**
+   * Endpoint for user registration.
+   * @param createUserDto - The DTO containing user registration information.
+   * @param response - The HTTP response object.
+   * @returns The HTTP response with a JWT cookie and a success message.
+   */
   @Post('register')
   async signUp(
     @Body() createUserDto: CreateUserDto,
@@ -42,6 +57,11 @@ export class AuthController {
     return response;
   }
 
+  /**
+   * Endpoint for retrieving user profile.
+   * @param req - The HTTP request object.
+   * @returns The user profile.
+   */
   @UseGuards(AuthGuard)
   @Get('profile')
   getProfile(@Request() req) {

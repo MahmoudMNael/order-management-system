@@ -1,3 +1,6 @@
+/**
+ * A guard that checks if a user is authenticated.
+ */
 import {
   CanActivate,
   ExecutionContext,
@@ -22,6 +25,12 @@ export class AuthGuard implements CanActivate {
     private usersService: UsersService,
   ) {}
 
+  /**
+   * Determines if a user is authenticated to access a route.
+   * @param context - The execution context of the route.
+   * @returns A boolean indicating if the user is authorized.
+   * @throws UnauthorizedException if the user is not authorized.
+   */
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const token = this.extractTokenFromHeader(request);
@@ -41,6 +50,11 @@ export class AuthGuard implements CanActivate {
     return true;
   }
 
+  /**
+   * Extracts the JWT token from the request header.
+   * @param request - The HTTP request object.
+   * @returns The JWT token or undefined if not found.
+   */
   private extractTokenFromHeader(request: Request): string | undefined {
     const token = request.cookies['jwt'];
     return token;

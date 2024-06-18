@@ -12,6 +12,11 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
+  /**
+   * Hashes the password randomly using a salt and returns the hashed password.
+   * @param password - The password to be hashed.
+   * @returns The hashed password.
+   */
   private async hashPasswordRandomly(password: string): Promise<string> {
     const salt = crypto.randomBytes(8).toString('hex');
     const hashedPassword = crypto
@@ -23,6 +28,12 @@ export class AuthService {
     return passwordToSave;
   }
 
+  /**
+   * Hashes the password using the provided salt and returns the hashed password.
+   * @param password - The password to be hashed.
+   * @param salt - The salt to be used for hashing.
+   * @returns The hashed password.
+   */
   private async hashPassword(password: string, salt: string): Promise<string> {
     const hashedPassword = crypto
       .pbkdf2Sync(password, salt, 310000, 64, 'sha512')
@@ -33,6 +44,12 @@ export class AuthService {
     return passwordToSave;
   }
 
+  /**
+   * Authenticates a user by checking the provided credentials and returns an access token.
+   * @param signInUserDto - The DTO containing the user's email and password.
+   * @returns The access token.
+   * @throws BadRequestException if the provided credentials are invalid.
+   */
   async signIn(signInUserDto: SignInUserDto): Promise<string> {
     const user = await this.usersService.findOne(signInUserDto.email);
     if (!user) {
@@ -57,6 +74,12 @@ export class AuthService {
     return access_token;
   }
 
+  /**
+   * Creates a new user with the provided information and returns an access token.
+   * @param createUserDto - The DTO containing the user's email, name, address, and password.
+   * @returns The access token.
+   * @throws BadRequestException if a user with the same email already exists.
+   */
   async signUp(createUserDto: CreateUserDto): Promise<string> {
     const existingUser = await this.usersService.findOne(createUserDto.email);
     if (existingUser) {

@@ -6,6 +6,12 @@ import { DatabaseService } from 'src/database/database.service';
 export class CartsService {
   constructor(private readonly databaseService: DatabaseService) {}
 
+  /**
+   * Finds a cart by user ID.
+   * @param userId - The ID of the user.
+   * @returns The found cart.
+   * @throws NotFoundException if the cart is not found.
+   */
   async findOne(userId: number) {
     const cart = await this.databaseService.cart.findUnique({
       where: { userId },
@@ -19,6 +25,14 @@ export class CartsService {
     return cart;
   }
 
+  /**
+   * Adds a product to the cart.
+   * @param userId - The ID of the user.
+   * @param productId - The ID of the product to add.
+   * @param quantity - The quantity of the product to add.
+   * @returns The updated cart item.
+   * @throws NotFoundException if the product is not found.
+   */
   async addToCart(userId: number, productId: number, quantity: number) {
     const cart = await this.findOne(userId);
 
@@ -50,6 +64,14 @@ export class CartsService {
     });
   }
 
+  /**
+   * Updates the quantity of a cart item.
+   * @param userId - The ID of the user.
+   * @param productId - The ID of the product in the cart.
+   * @param quantity - The new quantity of the cart item.
+   * @returns The updated cart item.
+   * @throws NotFoundException if the product is not found in the cart.
+   */
   async updateCartItem(userId: number, productId: number, quantity: number) {
     const cart = await this.findOne(userId);
 
@@ -67,6 +89,12 @@ export class CartsService {
     });
   }
 
+  /**
+   * Removes a product from the cart.
+   * @param userId - The ID of the user.
+   * @param productId - The ID of the product to remove.
+   * @returns The number of cart items deleted.
+   */
   async removeFromCart(userId: number, productId: number) {
     const cart = await this.findOne(userId);
 
@@ -75,6 +103,11 @@ export class CartsService {
     });
   }
 
+  /**
+   * Clears the cart.
+   * @param cart - The cart object.
+   * @returns The number of cart items deleted.
+   */
   async clearCart(cart: { id: number }) {
     return this.databaseService.cartItem.deleteMany({
       where: { cartId: cart.id },
