@@ -6,9 +6,10 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { APP_PIPE } from '@nestjs/core';
 import { ProductsModule } from './products/products.module';
+import { CartsModule } from './carts/carts.module';
 
 @Module({
-  imports: [DatabaseModule, UsersModule, AuthModule, ProductsModule],
+  imports: [DatabaseModule, UsersModule, AuthModule, ProductsModule, CartsModule],
   controllers: [AppController],
   providers: [
     AppService,
