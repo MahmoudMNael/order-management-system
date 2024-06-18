@@ -49,18 +49,12 @@ model CartItem {
   cart      Cart    @relation(fields: [cartId], references: [id])
 }
 
-enum OrderStatus {
-  pending
-  processing
-  shipped
-  delivered
-}
-
 model Order {
   id         Int         @id @default(autoincrement())
   userId     Int
   orderDate  DateTime    @default(now())
-  status     OrderStatus @default(pending)
+  status     String      @default("pending")
+  discount   Float       @default(0)
   user       User        @relation(fields: [userId], references: [id])
   orderItems OrderItem[]
 }
@@ -72,4 +66,10 @@ model OrderItem {
   orderId   Int
   product   Product @relation(fields: [productId], references: [id])
   order     Order   @relation(fields: [orderId], references: [id])
+}
+
+model Coupon {
+  code     String @id
+  discount Float
+  maxUses  Int
 }

@@ -21,6 +21,15 @@ export class AppService implements OnApplicationBootstrap {
         },
       ],
     });
+
+    await this.databaseService.$queryRaw`TRUNCATE TABLE "Coupon" CASCADE;`;
+    await this.databaseService.coupon.createMany({
+      data: [
+        { code: '10OFF', discount: 10, maxUses: 30 },
+        { code: '20OFF', discount: 20, maxUses: 20 },
+        { code: '30OFF', discount: 30, maxUses: 10 },
+      ],
+    });
   }
 
   getHello(): string {

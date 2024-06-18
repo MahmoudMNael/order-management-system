@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
 import { DatabaseService } from 'src/database/database.service';
 
 @Injectable()
@@ -71,6 +72,12 @@ export class CartsService {
 
     return this.databaseService.cartItem.deleteMany({
       where: { cartId: cart.id, productId },
+    });
+  }
+
+  async clearCart(cart: { id: number }) {
+    return this.databaseService.cartItem.deleteMany({
+      where: { cartId: cart.id },
     });
   }
 }

@@ -25,4 +25,14 @@ export class UsersService {
     });
     return user;
   }
+
+  async findUserOrders(userId: number) {
+    return this.databaseService.order.findMany({
+      where: { userId },
+      include: {
+        orderItems: { include: { product: true } },
+      },
+      orderBy: { orderDate: 'desc' },
+    });
+  }
 }
