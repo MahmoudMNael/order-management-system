@@ -1,9 +1,11 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
+  Put,
   Request,
   UseGuards,
 } from '@nestjs/common';
@@ -34,5 +36,22 @@ export class CartsController {
     const quantity = body.quantity;
 
     return this.cartsService.addToCart(userId, productId, quantity);
+  }
+
+  @Put('update')
+  async updateCartItem(@Body() body, @Request() request) {
+    const userId = request.user.id;
+    const productId = body.productId;
+    const quantity = body.quantity;
+
+    return this.cartsService.updateCartItem(userId, productId, quantity);
+  }
+
+  @Delete('remove')
+  async removeFromCart(@Body() body, @Request() request) {
+    const userId = request.user.id;
+    const productId = body.productId;
+
+    return this.cartsService.removeFromCart(userId, productId);
   }
 }

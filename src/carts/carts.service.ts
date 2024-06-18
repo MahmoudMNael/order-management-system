@@ -48,4 +48,29 @@ export class CartsService {
       },
     });
   }
+
+  async updateCartItem(userId: number, productId: number, quantity: number) {
+    const cart = await this.findOne(userId);
+
+    const existingCartItem = await this.databaseService.cartItem.findFirst({
+      where: { cartId: cart.id, productId },
+    });
+
+    if (!existingCartItem) {
+      throw new NotFoundException('Product not found in cart');
+    }
+
+    return this.databaseService.cartItem.update({
+      where: { id: existingCartItem.id },
+      data: { quantity },
+    });
+  }
+
+  async removeFromCart(userId: number, productId: number) {
+    const cart = await this.findOne(userId);
+
+    return this.databaseService.cartItem.deleteMany({
+      where: { cartId: cart.id, productId },
+    });
+  }
 }
