@@ -22,7 +22,15 @@ export class OrdersService {
       where: { id },
       include: {
         orderItems: { include: { product: true } },
-        user: { select: { password: false } },
+        user: {
+          select: {
+            id: true,
+            email: true,
+            name: true,
+            address: true,
+            password: false,
+          },
+        },
       },
     });
   }
@@ -36,8 +44,8 @@ export class OrdersService {
   async createOrder(userId: number) {
     const cart = await this.cartsService.findOne(userId);
 
-    if (!cart) {
-      throw new NotFoundException('Cart not found');
+    if (cart.cartItems.length === 0) {
+      throw new NotFoundException('Cart is empty');
     }
 
     for (const cartItem of cart.cartItems) {
@@ -99,7 +107,7 @@ export class OrdersService {
       where: { code: couponCode },
     });
 
-    if (coupon) {
+    if (!coupon) {
       throw new NotFoundException('Coupon already applied');
     }
 

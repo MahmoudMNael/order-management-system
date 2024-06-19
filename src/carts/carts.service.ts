@@ -13,13 +13,18 @@ export class CartsService {
    * @throws NotFoundException if the cart is not found.
    */
   async findOne(userId: number) {
-    const cart = await this.databaseService.cart.findUnique({
+    let cart = await this.databaseService.cart.findUnique({
       where: { userId },
       include: { cartItems: { include: { product: true } } },
     });
 
     if (!cart) {
-      throw new NotFoundException('Cart not found');
+      cart = await this.databaseService.cart.create({
+        data: {
+          userId,
+        },
+        include: { cartItems: { include: { product: true } } },
+      });
     }
 
     return cart;
