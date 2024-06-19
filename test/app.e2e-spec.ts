@@ -1,7 +1,22 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
+import { ExecutionContext, INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
+
+jest.mock('./../src/auth/auth.guard.ts', () => ({
+  AuthGuard: jest.fn().mockImplementation(() => ({
+    canActivate: jest.fn().mockImplementation((context: ExecutionContext) => {
+      const request = context.switchToHttp().getRequest();
+      request['user'] = {
+        id: 1,
+        email: 'mahmoudmnael@gmail.com',
+        name: 'Mahmoud Nael',
+        address: 'Hadayek ElAhram, Giza, Egypt',
+      };
+      return true;
+    }),
+  })),
+}));
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
