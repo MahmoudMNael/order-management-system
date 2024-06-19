@@ -1,8 +1,8 @@
 import { forwardRef, Module } from '@nestjs/common';
 import { OrdersController } from './orders.controller';
 import { OrdersService } from './orders.service';
-import { UsersModule } from 'src/users/users.module';
-import { CartsModule } from 'src/carts/carts.module';
+import { UsersModule } from '../users/users.module';
+import { CartsModule } from '../carts/carts.module';
 
 @Module({
   imports: [UsersModule, CartsModule],

@@ -9,6 +9,18 @@
 
 #### You need to have NodeJs, PostgreSQL and Git installed before running this project.
 
+## API Documentation
+
+### You need to install postman first.
+
+Then:
+
+- Open postman
+- import collection
+- select the file "API documentation.postman_collection.json"
+- right click on the new collection that appeared
+- view documentation
+
 ## Installing Nest CLI
 
 ```bash
@@ -40,6 +52,7 @@ Add variables:
 
 ```bash
 $ npx prisma migrate dev
+$ npx prisma db seed
 ```
 
 ## Running the app
@@ -61,7 +74,3 @@ $ npm run start:prod
 # e2e tests
 $ npm run test:e2e
 ```
-
-# CAUTION!
-
-### If you want to remove the seed data in the program, go to app.service.ts and comment/remove the content of OnApplicationBootstrap() function

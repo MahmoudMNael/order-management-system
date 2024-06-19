@@ -10,7 +10,7 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
 import { config } from 'dotenv';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from '../users/users.service';
 config();
 
 type Payload = {

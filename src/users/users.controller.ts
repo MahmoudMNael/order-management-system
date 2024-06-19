@@ -1,5 +1,5 @@
 import { Controller, forwardRef, Get, Inject, Param } from '@nestjs/common';
-import { OrdersService } from 'src/orders/orders.service';
+import { OrdersService } from '../orders/orders.service';
 import { UsersService } from './users.service';
 
 /**

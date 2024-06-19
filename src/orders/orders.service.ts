@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CartsService } from 'src/carts/carts.service';
-import { DatabaseService } from 'src/database/database.service';
+import { CartsService } from '../carts/carts.service';
+import { DatabaseService } from '../database/database.service';
 
 /**
  * Service responsible for handling order-related operations.
