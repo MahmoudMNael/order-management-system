@@ -33,8 +33,8 @@ $ npm install
 
 Add variables:
 
-1. DATABASE_URL with the database connection string
-2. JWT_SECRET with the secret key of your jwt tokens
+- DATABASE_URL with the database connection string
+- JWT_SECRET with the secret key of your jwt tokens
 
 ## Run database migration
 
@@ -61,3 +61,7 @@ $ npm run start:prod
 # e2e tests
 $ npm run test:e2e
 ```
+
+# CAUTION!
+
+### If you want to remove the seed data in the program, go to app.service.ts and comment/remove the content of OnApplicationBootstrap() function
