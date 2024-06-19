@@ -52,12 +52,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/auth/register",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api/auth/register",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"auth",
@@ -149,12 +147,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/auth/login",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api/auth/login",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"auth",
@@ -228,12 +224,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/api/auth/profile",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api/auth/profile",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"auth",
@@ -308,12 +302,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/api/products",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api/products",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"products"
@@ -388,12 +380,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/api/products/:productId",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api/products/:productId",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"products",
@@ -475,12 +465,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/api/carts/my-cart",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api/carts/my-cart",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"carts",
@@ -556,12 +544,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/api/carts/:userId",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api/carts/:userId",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"carts",
@@ -655,12 +641,101 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/carts/add",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api/carts/add",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
+									"path": [
+										"api",
+										"carts",
+										"add"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-DZyKaFKzux1yDIIFIFLaifWHZls\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Jun 2024 23:35:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"quantity\": 3,\n    \"productId\": 1,\n    \"cartId\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Item Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": 5,\r\n    \"quantity\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/carts/add",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"carts",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": 1,\r\n    \"quantity\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/carts/add",
+									"host": [
+										"{{baseUrl}}"
+									],
 									"path": [
 										"api",
 										"carts",
@@ -748,12 +823,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/carts/update",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api/carts/update",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"carts",
@@ -841,12 +914,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/carts/remove",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api/carts/remove",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"carts",
@@ -921,12 +992,10 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/api/orders",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api/orders",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"orders"
@@ -1001,12 +1070,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/api/orders/:orderId",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api/orders/:orderId",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"orders",
@@ -1086,7 +1153,7 @@
 							"variable": [
 								{
 									"key": "orderId",
-									"value": "2"
+									"value": "1"
 								}
 							]
 						}
@@ -1107,12 +1174,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/orders/:orderId/status",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api/orders/:orderId/status",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"orders",
@@ -1172,7 +1237,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"couponCode\": \"10OFF\",\r\n    \"orderId\": 2\r\n}",
+							"raw": "{\r\n    \"couponCode\": \"10OFF\",\r\n    \"orderId\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1207,12 +1272,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/orders/apply-coupon",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api/orders/apply-coupon",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"orders",
@@ -1289,12 +1352,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:3000/api/users/:userId/orders",
-									"protocol": "http",
+									"raw": "{{baseUrl}}/api/users/:userId/orders",
 									"host": [
-										"localhost"
+										"{{baseUrl}}"
 									],
-									"port": "3000",
 									"path": [
 										"api",
 										"users",
@@ -1366,7 +1427,7 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					""
+					"// email = pm.variables.replaceIn(\"{{$randomEmail}}\")"
 				]
 			}
 		}
